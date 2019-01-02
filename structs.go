@@ -3,7 +3,6 @@ package structs
 
 import (
 	"fmt"
-
 	"reflect"
 )
 
@@ -27,7 +26,7 @@ type Struct struct {
 func New(s interface{}) *Struct {
 	return &Struct{
 		raw:     s,
-		value:   strctVal(s),
+		value:   structVal(s),
 		TagName: DefaultTagName,
 	}
 }
@@ -425,7 +424,7 @@ func (s *Struct) structFields() []reflect.StructField {
 	return f
 }
 
-func strctVal(s interface{}) reflect.Value {
+func structVal(s interface{}) reflect.Value {
 	v := reflect.ValueOf(s)
 
 	// if pointer get the underlying element≤
